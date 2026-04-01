@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | Erie Family Dental</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #1e293b; line-height: 1.6; }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: #fff; border-bottom: 1px solid #e2e8f0;
+    padding: 0 24px;
+  }
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-size: 1.2rem; font-weight: 700; color: #2563EB;
+  }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { font-size: 0.95rem; color: #475569; font-weight: 500; }
+  .nav-links a:hover { color: #2563EB; }
+  .nav-links a.active { color: #2563EB; border-bottom: 2px solid #2563EB; padding-bottom: 2px; }
+  .nav-cta {
+    background: #2563EB; color: #fff;
+    padding: 9px 20px; border-radius: 6px;
+    font-size: 0.9rem; font-weight: 600;
+  }
+  .nav-cta:hover { background: #1d4ed8; color: #fff; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: #475569; border-radius: 2px; }
+  .mobile-menu {
+    display: none; flex-direction: column; gap: 0;
+    background: #fff; border-top: 1px solid #e2e8f0;
+    padding: 8px 24px 16px;
+  }
+  .mobile-menu a { padding: 10px 0; font-size: 1rem; color: #475569; border-bottom: 1px solid #f1f5f9; }
+  .mobile-menu a.active { color: #2563EB; }
+  .mobile-menu.open { display: flex; }
+
+  /* HERO */
+  .hero {
+    background: #DBEAFE;
+    padding: 64px 24px;
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  }
+  .hero-text h1 { font-size: 2.2rem; font-weight: 800; color: #1e293b; line-height: 1.2; margin-bottom: 16px; }
+  .hero-text h1 span { color: #2563EB; }
+  .hero-text p { font-size: 1.05rem; color: #475569; max-width: 480px; }
+  .hero-img img { width: 100%; border-radius: 12px; display: block; object-fit: cover; max-height: 380px; }
+
+  /* STORY */
+  .story { padding: 64px 24px; background: #fff; }
+  .story-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #2563EB; margin-bottom: 10px; }
+  .section-title { font-size: 1.8rem; font-weight: 800; color: #1e293b; margin-bottom: 16px; }
+  .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .story-text p { color: #475569; font-size: 1rem; margin-bottom: 14px; }
+  .story-img img { width: 100%; border-radius: 12px; object-fit: cover; max-height: 340px; display: block; }
+  .mission-box {
+    background: #DBEAFE; border-left: 4px solid #2563EB;
+    padding: 20px 24px; border-radius: 8px; margin-top: 20px;
+  }
+  .mission-box p { color: #1e40af; font-size: 1rem; font-style: italic; margin: 0; }
+
+  /* WHY CHOOSE US */
+  .why { padding: 64px 24px; background: #f8fafc; }
+  .why-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+  .why-inner .section-title { margin-bottom: 40px; }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: left; }
+  .why-card { background: #fff; border-radius: 10px; padding: 28px 24px; border: 1px solid #e2e8f0; }
+  .why-icon { width: 48px; height: 48px; background: #DBEAFE; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .why-icon svg { width: 24px; height: 24px; stroke: #2563EB; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .why-card h3 { font-size: 1.05rem; font-weight: 700; color: #1e293b; margin-bottom: 8px; }
+  .why-card p { font-size: 0.92rem; color: #64748b; }
+
+  /* CTA STRIP */
+  .cta-strip { background: #2563EB; padding: 48px 24px; text-align: center; }
+  .cta-strip h2 { font-size: 1.7rem; font-weight: 800; color: #fff; margin-bottom: 12px; }
+  .cta-strip p { color: #DBEAFE; font-size: 1rem; margin-bottom: 24px; }
+  .cta-btn { display: inline-block; background: #fff; color: #2563EB; font-weight: 700; padding: 12px 28px; border-radius: 6px; font-size: 1rem; }
+
+  /* FOOTER */
+  footer { background: #1e293b; color: #cbd5e1; padding: 40px 24px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+  .footer-brand .logo { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .footer-brand p { font-size: 0.88rem; color: #94a3b8; }
+  .footer-col h4 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 12px; }
+  .footer-col a { display: block; font-size: 0.9rem; color: #94a3b8; margin-bottom: 6px; }
+  .footer-col p { font-size: 0.9rem; color: #94a3b8; margin-bottom: 6px; }
+  .footer-bottom { max-width: 1100px; margin: 24px auto 0; padding-top: 20px; border-top: 1px solid #334155; text-align: center; font-size: 0.82rem; color: #64748b; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-img { order: -1; }
+    .hero-text h1 { font-size: 1.7rem; }
+    .story-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Erie Family Dental</div>
+    <div class="nav-links">
+      <a href="/eriefamilydental-com/">Home</a>
+      <a href="/eriefamilydental-com/about/" class="active">About</a>
+      <a href="/eriefamilydental-com/services/">Services</a>
+      <a href="/eriefamilydental-com/contact/">Contact</a>
+    </div>
+    <a href="/eriefamilydental-com/contact/" class="nav-cta">Book Appointment</a>
+    <div class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/eriefamilydental-com/">Home</a>
+    <a href="/eriefamilydental-com/about/" class="active">About</a>
+    <a href="/eriefamilydental-com/services/">Services</a>
+    <a href="/eriefamilydental-com/contact/">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="section-label">About Our Practice</p>
+      <h1>Caring for Erie Families, <span>One Smile at a Time</span></h1>
+      <p>At Erie Family Dental, we believe great dental care goes beyond healthy teeth — it's about building lasting relationships with the families we serve right here in our community.</p>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1758205308179-4e00e0e4060b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTIyMjB8MHwxfHNlYXJjaHwxfHxkZW50YWwlMjBwcmFjdGljZSUyMHByb2Zlc3Npb25hbHxlbnwwfDB8fHwxNzc1MDAwMTAzfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Erie Family Dental team">
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="story-inner">
+    <div class="story-grid">
+      <div class="story-text">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title">Rooted in Erie, Built on Trust</h2>
+        <p>Erie Family Dental was founded with one goal in mind: to give every patient in Erie, PA a dental home where they feel welcome, respected, and genuinely cared for. We know that visiting the dentist can feel stressful, so we've built our practice around comfort and clear communication.</p>
+        <p>From your child's first checkup to restorative care and smile makeovers, our experienced team is here for every chapter of your family's dental journey. We combine modern techniques with a personal touch that keeps our patients coming back generation after generation.</p>
+        <div class="mission-box">
+          <p>"Our mission is to provide compassionate, high-quality dental care that empowers families in Erie to smile with confidence every single day."</p>
+        </div>
+      </div>
+      <div class="story-img">
+        <img src="https://images.unsplash.com/photo-1770321119305-f191c09c5801?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTIyMjB8MHwxfHNlYXJjaHwxfHxkZW50YWwlMjBwcmFjdGljZSUyMG9mZmljZXxlbnwwfDB8fHwxNzc1MDAwMTAzfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Erie Family Dental office">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="why-inner">
+    <p class="section-label">Why Choose Us</p>
+    <h2 class="section-title">The Erie Family Dental Difference</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Family-Focused Care</h3>
+        <p>We welcome patients of all ages — from toddlers to grandparents — under one roof, making dental care simple and convenient for the whole family.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Experienced Team</h3>
+        <p>Our skilled dental professionals bring years of expertise in general dentistry, Invisalign, teeth whitening, and emergency dental services.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <h3>Always Here When You Need Us</h3>
+        <p>Dental emergencies don't wait. We offer same-day emergency appointments so you're never left in pain. Just call us at (814) 555-0192.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Comfortable Environment</h3>
+        <p>Our warm, welcoming office is designed to put anxious patients at ease. We take time to explain every procedure and answer your questions.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Flexible Scheduling</h3>
+        <p>We offer convenient appointment times, including early and late hours, to fit busy family schedules without the hassle.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Proudly Local</h3>
+        <p>We're your neighbors. Erie is our home, and we're committed to giving back to the community that has trusted us with their smiles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <h2>Ready to Meet Our Team?</h2>
+  <p>Schedule your first visit and see why families across Erie trust us with their dental care.</p>
+  <a href="/eriefamilydental-com/contact/" class="cta-btn">Book Your Appointment</a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">Erie Family Dental</div>
+      <p>Compassionate dental care for families in Erie, PA. Your smile is our priority.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="/eriefamilydental-com/">Home</a>
+      <a href="/eriefamilydental-com/about/">About</a>
+      <a href="/eriefamilydental-com/services/">Services</a>
+      <a href="/eriefamilydental-com/contact/">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <p>📞 (814) 555-0192</p>
+      <p>✉️ hello@eriefamilydental.com</p>
+      <p>📍 123 Peach St, Erie PA 16501</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 Erie Family Dental. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>

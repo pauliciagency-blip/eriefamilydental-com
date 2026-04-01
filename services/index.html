@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | Erie Family Dental</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #1e293b; background: #fff; }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: #fff; border-bottom: 1px solid #e2e8f0;
+    padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo { font-size: 1.2rem; font-weight: 700; color: #2563EB; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 0.95rem; color: #334155; font-weight: 500; }
+  .nav-links a:hover, .nav-links a.active { color: #2563EB; }
+  .nav-cta {
+    background: #2563EB; color: #fff;
+    padding: 9px 20px; border-radius: 6px;
+    font-size: 0.9rem; font-weight: 600;
+  }
+  .nav-cta:hover { background: #1d4ed8; color: #fff; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: #334155; display: block; }
+  .mobile-menu {
+    display: none; flex-direction: column; gap: 0;
+    background: #fff; border-bottom: 1px solid #e2e8f0;
+    padding: 8px 24px 16px;
+  }
+  .mobile-menu a { padding: 10px 0; font-size: 0.95rem; color: #334155; border-bottom: 1px solid #f1f5f9; }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu.open { display: flex; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #2563EB 0%, #1d4ed8 100%);
+    padding: 60px 24px;
+    text-align: center; color: #fff;
+  }
+  .hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 14px; }
+  .hero p { font-size: 1.1rem; max-width: 560px; margin: 0 auto; opacity: 0.9; line-height: 1.6; }
+
+  /* SERVICES SECTION */
+  .services-section { padding: 60px 24px; max-width: 1100px; margin: 0 auto; }
+  .section-intro { text-align: center; margin-bottom: 48px; }
+  .section-intro h2 { font-size: 1.9rem; font-weight: 700; color: #1e293b; margin-bottom: 10px; }
+  .section-intro p { font-size: 1rem; color: #64748b; max-width: 560px; margin: 0 auto; line-height: 1.6; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .service-card {
+    border: 1px solid #e2e8f0; border-radius: 12px;
+    padding: 32px 28px; background: #fff;
+  }
+  .service-icon {
+    width: 48px; height: 48px; background: #DBEAFE;
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+  }
+  .service-icon svg { width: 26px; height: 26px; fill: #2563EB; }
+  .service-card h3 { font-size: 1.2rem; font-weight: 700; color: #1e293b; margin-bottom: 10px; }
+  .service-card p { font-size: 0.95rem; color: #475569; line-height: 1.65; margin-bottom: 20px; }
+  .service-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .service-price { font-size: 0.9rem; font-weight: 600; color: #2563EB; background: #DBEAFE; padding: 4px 12px; border-radius: 20px; }
+  .service-btn {
+    background: #2563EB; color: #fff;
+    padding: 9px 20px; border-radius: 6px;
+    font-size: 0.88rem; font-weight: 600;
+    display: inline-block;
+  }
+  .service-btn:hover { background: #1d4ed8; }
+
+  /* PHOTO STRIP */
+  .photo-strip { background: #DBEAFE; padding: 48px 24px; }
+  .photo-strip-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+  .photo-strip img {
+    width: 420px; max-width: 100%; height: 300px;
+    object-fit: cover; border-radius: 12px;
+    flex-shrink: 0;
+  }
+  .photo-strip-content { flex: 1; min-width: 240px; }
+  .photo-strip-content h2 { font-size: 1.7rem; font-weight: 700; color: #1e293b; margin-bottom: 14px; }
+  .photo-strip-content p { font-size: 0.97rem; color: #475569; line-height: 1.7; margin-bottom: 22px; }
+  .btn-primary {
+    background: #2563EB; color: #fff;
+    padding: 12px 28px; border-radius: 7px;
+    font-size: 0.95rem; font-weight: 600;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #1d4ed8; }
+
+  /* FOOTER */
+  footer { background: #1e293b; color: #cbd5e1; padding: 40px 24px 24px; }
+  .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 32px; }
+  .footer-col h4 { color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 12px; }
+  .footer-col p, .footer-col a { font-size: 0.9rem; line-height: 1.8; color: #94a3b8; display: block; }
+  .footer-col a:hover { color: #DBEAFE; }
+  .footer-col .logo { font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+  .footer-bottom { max-width: 1100px; margin: 0 auto; border-top: 1px solid #334155; padding-top: 20px; text-align: center; font-size: 0.85rem; color: #64748b; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .hero h1 { font-size: 1.8rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .photo-strip-inner { flex-direction: column; }
+    .photo-strip img { width: 100%; height: 220px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Erie Family Dental</div>
+  <div class="nav-links">
+    <a href="/eriefamilydental-com/">Home</a>
+    <a href="/eriefamilydental-com/about/">About</a>
+    <a href="/eriefamilydental-com/services/" class="active">Services</a>
+    <a href="/eriefamilydental-com/contact/">Contact</a>
+  </div>
+  <a href="/eriefamilydental-com/contact/" class="nav-cta">Book Appointment</a>
+  <div class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/eriefamilydental-com/">Home</a>
+  <a href="/eriefamilydental-com/about/">About</a>
+  <a href="/eriefamilydental-com/services/">Services</a>
+  <a href="/eriefamilydental-com/contact/">Contact</a>
+</div>
+
+<section class="hero">
+  <h1>Our Dental Services</h1>
+  <p>From routine cleanings to smile transformations, Erie Family Dental offers comprehensive care for every member of your family — all in one welcoming place.</p>
+</section>
+
+<section class="services-section">
+  <div class="section-intro">
+    <h2>Everything Your Family Needs</h2>
+    <p>We're proud to offer a full range of dental services tailored to Erie families. Whatever your smile needs, we have you covered.</p>
+  </div>
+
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.5 2 5 4.5 5 8c0 2.5 1 4.5 2 6.5S8 18 8 20h8c0-2 1-3.5 2-5.5S19 10.5 19 8c0-3.5-3.5-6-7-6zm0 2c2.8 0 5 2 5 4 0 2-1 3.8-1.9 5.5-.5 1-.9 2-1.1 3h-4c-.2-1-.6-2-1.1-3C7 11.8 6 10 6 8c0-2 2.2-4 6-4z"/></svg>
+      </div>
+      <h3>General Dentistry</h3>
+      <p>Keep your family's smiles healthy with routine exams, professional cleanings, fillings, and preventive care. We recommend visits every six months to catch issues early and keep teeth strong for life.</p>
+      <div class="service-meta">
+        <span class="service-price">Exams from $85</span>
+        <a href="/eriefamilydental-com/contact/" class="service-btn">Book Now</a>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3a9 9 0 100 18A9 9 0 0012 3zm0 2a7 7 0 110 14A7 7 0 0112 5zm-1 3v2H9v2h2v4h2v-4h2v-2h-2V8h-2z"/></svg>
+      </div>
+      <h3>Teeth Whitening</h3>
+      <p>Brighten your smile by several shades with our professional in-office whitening treatment. Safe, fast, and dramatically more effective than over-the-counter options — results you'll notice after just one visit.</p>
+      <div class="service-meta">
+        <span class="service-price">Starting at $199</span>
+        <a href="/eriefamilydental-com/contact/" class="service-btn">Book Now</a>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16v2H4zm2 4h12v2H6zm2 4h8v2H8zm2 4h4v2h-4z"/></svg>
+      </div>
+      <h3>Invisalign</h3>
+      <p>Straighten your teeth discreetly with Invisalign clear aligners. A great alternative to traditional braces for teens and adults alike — removable, comfortable, and virtually invisible throughout treatment.</p>
+      <div class="service-meta">
+        <span class="service-price">Free Consultation</span>
+        <a href="/eriefamilydental-com/contact/" class="service-btn">Get Started</a>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm1 14.93V18h-2v-1.07A8.001 8.001 0 014 9h2a6 6 0 0012 0h2a8.001 8.001 0 01-7 7.93zM11 7h2v5h-2z"/></svg>
+      </div>
+      <h3>Emergency Care</h3>
+      <p>Dental emergencies don't wait for convenient times. Whether it's a cracked tooth, severe pain, or a knocked-out tooth, we offer same-day emergency appointments to relieve pain and protect your smile quickly.</p>
+      <div class="service-meta">
+        <span class="service-price">Same-Day Available</span>
+        <a href="tel:8145550192" class="service-btn">Call Now</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="photo-strip">
+  <div class="photo-strip-inner">
+    <img src="https://images.unsplash.com/photo-1758205308179-4e00e0e4060b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTIyMjB8MHwxfHNlYXJjaHwxfHxkZW50YWwlMjBwcmFjdGljZSUyMHByb2Zlc3Npb25hbHxlbnwwfDB8fHwxNzc1MDAwMTAzfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Erie Family Dental professional care">
+    <div class="photo-strip-content">
+      <h2>Ready to Schedule Your Visit?</h2>
+      <p>Our friendly team at Erie Family Dental is here to make every appointment comfortable and stress-free. New patients are always welcome, and we accept most major insurance plans.</p>
+      <p style="margin-top:10px;">Call us at <strong style="color:#1e293b;">(814) 555-0192</strong> or click below to request an appointment online. We look forward to meeting your family!</p>
+      <a href="/eriefamilydental-com/contact/" class="btn-primary" style="margin-top:22px;">Request an Appointment</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="logo">Erie Family Dental</div>
+      <p>Trusted, compassionate dental care for families throughout Erie, PA. Your healthy smile is our mission.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="/eriefamilydental-com/">Home</a>
+      <a href="/eriefamilydental-com/about/">About Us</a>
+      <a href="/eriefamilydental-com/services/">Services</a>
+      <a href="/eriefamilydental-com/contact/">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <a href="tel:8145550192">(814) 555-0192</a>
+      <a href="mailto:hello@eriefamilydental.com">hello@eriefamilydental.com</a>
+      <p>123 Peach St, Erie PA 16501</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Erie Family Dental. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
