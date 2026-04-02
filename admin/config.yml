@@ -1,0 +1,35 @@
+backend:
+  name: git-gateway
+  branch: main  # or "master" if that's your branch name
+
+media_folder: "images/uploads"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: "index.html"
+        fields:
+          - { label: "Headline", name: "title", widget: "string" }
+          - { label: "Body Text", name: "body", widget: "markdown" }
+```
+
+Commit and push both files to GitHub. Netlify will auto-deploy.
+
+---
+
+## Step 3: Invite yourself as an editor
+
+1. Back in Netlify → **Identity** → click **Invite users**
+2. Enter your email and send the invite
+3. Check your email and accept the invite — it'll ask you to set a password
+
+---
+
+## Step 4: Access your visual editor
+
+Go to:
+```
+https://your-site-name.netlify.app/admin
